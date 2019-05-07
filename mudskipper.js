@@ -1,34 +1,30 @@
-var Crawler = require("crawler");
+const Crawler = require("crawler");
 
-var c = new Crawler({
+const c = new Crawler({
   maxConnections: 10,
   // This will be called for each crawled page
   callback: function(error, res, done) {
     if (error) {
       console.log(error);
     } else {
-      var $ = res.$;
-      var rows = $(".table-fishcount")
+      const $ = res.$;
+      const rows = $(".table-fishcount")
         .find("tr")
         .not(".catch-row");
-      var headings = rows[0];
-      // rows = rows.shift();
-      var data = [];
-      // console.log(rows);
+      const headings = rows[0];
+      let data = [];
       rows.each(rowIndex => {
-        var row = rows[rowIndex];
-        var date = $("td", row)
+        const row = rows[rowIndex];
+        const date = $("td", row)
           .first()
           .text();
-        var tripType = $(".triptype", row).text();
-        var anglers = $(".anglers", row).text();
-        var fishCounts = $(".catch", row).children();
-        var fish = [];
+        const tripType = $(".triptype", row).text();
+        const anglers = $(".anglers", row).text();
+        const fishCounts = $(".catch", row).children();
+        let fish = [];
         fishCounts.each(fishIndex => {
-          var fishType = "";
-          var fishCount = 0;
-          fishCount = $(".count", fishCounts[fishIndex]).text();
-          fishType = $(".fishtype", fishCounts[fishIndex]).text();
+          let fishCount = $(".count", fishCounts[fishIndex]).text();
+          let fishType = $(".fishtype", fishCounts[fishIndex]).text();
           fish.push({
             name: fishType,
             count: fishCount

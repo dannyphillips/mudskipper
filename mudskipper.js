@@ -3,7 +3,7 @@ const Crawler = require("crawler");
 const c = new Crawler({
   maxConnections: 10,
   // This will be called for each crawled page
-  callback: function(error, res, done) {
+  callback: function(error, res) {
     if (error) {
       console.log(error);
     } else {
@@ -40,7 +40,6 @@ const c = new Crawler({
       data.shift();
       console.log(data);
     }
-    done();
   }
 });
 
@@ -60,5 +59,4 @@ var day = today.getDate().toString();
 
 dateInt = year + twoDigits(month) + twoDigits(day);
 
-// c.queue(`https://www.fishingreport.us/plugin/page/16/${dateInt}`);
-c.queue(`https://www.fishingreport.us/plugin/page/16/20151031`);
+c.queue(`https://www.fishingreport.us/plugin/page/16/${dateInt}`);

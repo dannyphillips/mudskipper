@@ -1,4 +1,4 @@
-export default function ciscoCrawler(error, response) {
+export function ciscoCrawler(error, response) {
   if (error) {
     console.log(error);
   } else {

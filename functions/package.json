@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "crawler": "1.2.2",
-    "firebase-admin": "7.4.0",
+    "firebase-admin": "11.11.1",
     "firebase-functions": "2.3.1"
   },
   "devDependencies": {
